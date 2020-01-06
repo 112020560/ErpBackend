@@ -9,9 +9,9 @@ using Entities;
 
 namespace Business.Catalogs
 {
-    public class Catalogs : SqlRepository<Catalog>, ICatalogs
+    public class CatalogsServices : SqlRepository<Catalog>, ICatalogs
     {
-        public Catalogs(string connectionString) : base(connectionString) { }
+        public CatalogsServices(string connectionString) : base(connectionString) { }
         public override Task DeleteAsync<T>(T model)
         {
             throw new NotImplementedException();
@@ -26,7 +26,7 @@ namespace Business.Catalogs
         {
             using (var conn = GetOpenConnection())
             {
-                return await conn.QueryAsync<Catalog>(sql: "RETAIL.PA_CON_CATALOG", model, commandType:CommandType.StoredProcedure);
+                return await conn.QueryAsync<Catalog>(sql: "RETAIL.PA_CON_CATALOG", model, commandType:CommandType.StoredProcedure).ConfigureAwait(false);
             }
         }
 

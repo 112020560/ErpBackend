@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Catalog(CatalogRequest request)
         {
-            var result = await _catalogs.GetAllAsync<CatalogRequest>(request);
+            var result = await _catalogs.GetAllAsync(request).ConfigureAwait(false);
             return Ok(result);
         }
     }

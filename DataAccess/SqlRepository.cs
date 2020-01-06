@@ -11,11 +11,11 @@ namespace DataAccess
         where TEntity : class
     {
         private string _connectionString;
-        private EDbConnectionTypes _dbType;
+        private EDbConnectionType _dbType;
 
         public SqlRepository(string connectionString)
         {
-            _dbType = EDbConnectionTypes.SQL;
+            _dbType = EDbConnectionType.SQL;
             _connectionString = connectionString;
         }
 

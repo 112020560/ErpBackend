@@ -4,21 +4,21 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-    public class DbConnectionFactory
+    public static class DbConnectionFactory
     {
-        public static IDbConnection GetDbConnection(EDbConnectionTypes dbType, string connectionString)
+        public static IDbConnection GetDbConnection(EDbConnectionType dbType, string connectionString)
         {
             IDbConnection connection = null;
 
             switch (dbType)
             {
-                case EDbConnectionTypes.SQL:
+                case EDbConnectionType.SQL:
                     connection = new SqlConnection(connectionString);
                     break;
-                case EDbConnectionTypes.XML:
+                case EDbConnectionType.XML:
                     // TODO: Implement XML Connection (path name)
                     break;
-                case EDbConnectionTypes.DOCUMENT:
+                case EDbConnectionType.DOCUMENT:
                     // TODO: Implement Document DB connection
                     break;
                 default:
@@ -30,7 +30,7 @@ namespace DataAccess
             return connection;
         }
 
-        public enum EDbConnectionTypes
+        public enum EDbConnectionType
         {
             SQL,
             DOCUMENT,

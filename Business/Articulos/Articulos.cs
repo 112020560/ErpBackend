@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Business.Articulos
 {
-    public class Articulos : SqlRepository<Articulo>, IArtuclos
+    public class ArticulosVenta : SqlRepository<Articulo>, IArtuclos
     {
-        public Articulos(string connectionString) : base(connectionString) { }
+        public ArticulosVenta(string connectionString) : base(connectionString) { }
 
         public override Task DeleteAsync<T>(T model)
         {
@@ -22,7 +22,7 @@ namespace Business.Articulos
         {
             using (var conn = GetOpenConnection())
             {
-                return await conn.QueryFirstOrDefaultAsync<Articulo>(sql: "usp_ArticulosFacturar_Listar", model, commandType: CommandType.StoredProcedure);
+                return await conn.QueryFirstOrDefaultAsync<Articulo>(sql: "usp_ArticulosFacturar_Listar", model, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
             }
         }
 

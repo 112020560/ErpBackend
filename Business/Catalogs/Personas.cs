@@ -22,7 +22,7 @@ namespace Business.Catalogs
         {
             using (var conn = GetOpenConnection())
             {
-                return await conn.QueryFirstOrDefaultAsync<Persona>(sql: "CRM.PA_CON_PERSONA_INFORMACION", model, commandType: CommandType.StoredProcedure);
+                return await conn.QueryFirstOrDefaultAsync<Persona>(sql: "CRM.PA_CON_PERSONA_INFORMACION", model, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
             }
         }
 
@@ -30,7 +30,7 @@ namespace Business.Catalogs
         {
             using (var conn = GetOpenConnection())
             {
-                return await conn.QueryAsync<Persona>(sql: "CRM.PA_CON_PERSONA_INFORMACION", model, commandType: CommandType.StoredProcedure);
+                return await conn.QueryAsync<Persona>(sql: "CRM.PA_CON_PERSONA_INFORMACION", model, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
             }
         }
 

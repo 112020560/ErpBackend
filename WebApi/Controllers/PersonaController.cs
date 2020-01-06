@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            var result = await _personas.FindAsync<object>(new { P_PK_MTR_PERSONA = id });
+            var result = await _personas.FindAsync<object>(new { P_PK_MTR_PERSONA = id }).ConfigureAwait(false);
             return Ok(result);
         }
     }
